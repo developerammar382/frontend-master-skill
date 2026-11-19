@@ -49,6 +49,17 @@ npx skills add developerammar382/frontend-master-skill -a cursor -y
 
 Agent names for `-a`: `claude-code`, `codex`, `cursor`, `github-copilot`, `gemini-cli`, `windsurf`, `opencode`, `cline`, `antigravity`, `kiro-cli`. Update later with `npx skills update`.
 
+Claude Code reads `.claude/skills/`, not the shared `.agents/skills/` folder, so select it in the list or add `-a claude-code`.
+
+**Update or uninstall:**
+
+```bash
+npx skills update frontend-master        # get the latest version
+npx skills remove frontend-master        # uninstall (add -g if installed globally)
+```
+
+Installed manually? Delete the `frontend-master` folder from your skills folder.
+
 ### Manual install
 
 Clone the repo into your agent's skills folder and name the folder `frontend-master`:

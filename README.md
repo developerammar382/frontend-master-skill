@@ -84,6 +84,17 @@ Clone the repo anywhere in your project, then add one line to your rules file (`
 For any UI or frontend task, read frontend-master/SKILL.md first and follow it.
 ```
 
+### Troubleshooting
+
+**`SyntaxError: ... does not provide an export named 'styleText'`** or **`EBADENGINE Unsupported engine`**: your Node.js is older than 22.20, which `npx skills` needs. Check with `node -v`, then upgrade:
+
+```bash
+nvm install --lts && nvm alias default lts/*   # with nvm
+brew upgrade node                              # with Homebrew
+```
+
+Or skip Node entirely and use the manual install above.
+
 Install the whole repo, not a single file from `skills/`. The sub-skills link to the workflows, rules, and references around them.
 
 ## Use

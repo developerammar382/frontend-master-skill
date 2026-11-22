@@ -38,12 +38,14 @@ These produce objective numbers for criteria 4, 5, 6, and 9. The rest is reviewe
 | | | 06-mobile-navigation | | | | |
 | | | 07-audit | | | | |
 | | | 08-luxury-brand-site | | | | |
+| | | 09-portfolio-design-vs-engineering | | | | |
 
 ## Targets
 
 - With-skill median: **80+ (A)** on every case
 - Delta vs baseline: **+20 points** or more on average
 - Zero hard-gate failures with the skill
+- **Parity:** with-skill scores equal or higher than baseline on every criterion in every case. Record per-criterion scores, not just totals, so a design regression can't hide behind better code.
 
 ## When a case regresses
 

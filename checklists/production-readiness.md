@@ -35,6 +35,10 @@
 - [ ] No `dangerouslySetInnerHTML` with user input
 - [ ] External links with `target="_blank"` have `rel="noopener noreferrer"`
 
+## Tests
+- [ ] The test plan from `skills/testing` is written and every item has a passing test
+- [ ] `npm test` and `npm run test:e2e` pass
+
 ## Code quality
 - [ ] Components follow `skills/frontend-architecture` (size, naming, one per file)
 - [ ] Design token audit grep returns no unjustified hits

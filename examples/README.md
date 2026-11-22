@@ -7,6 +7,7 @@ Reference implementations that show the skill's standards in real code. Copy the
 | `design-brief.md` | A complete design brief written before coding |
 | `tokens.css` | Tailwind v4 token setup with light and dark themes |
 | `header/` | Sticky header with mega menu and a designed mobile menu |
+| `motion/` | Motion primitives: `Reveal`, `Stagger`, `TextReveal`, `Parallax`, shared timing in `motion.ts`. Copy into `components/motion/` |
 
 These are copy-in files, not a runnable app. Drop them into an existing Next.js project that already has shadcn/ui set up.
 

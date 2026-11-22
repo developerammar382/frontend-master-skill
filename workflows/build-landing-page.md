@@ -1,56 +1,60 @@
 # Workflow: Build Landing Page
 
-Use for marketing sites, product launches, startup landing pages, and portfolios.
+Use for marketing sites, portfolios, personal sites, product launches, and startup landing pages.
 
-The goal: a visitor understands the value in 5 seconds and wants to keep scrolling.
+The goal: a visitor gets the value in 5 seconds, feels the craft in 10, and keeps scrolling.
 
-## 1. Brief
+## 1. Brief (before any code)
 
-- Load `skills/design-intelligence`. Write the design brief with a clear signature move.
-- Define the single conversion goal (sign up, book a demo, buy, join waitlist).
-- Pull 3-5 references from `references/inspiration.md` (start with SaaS Landing Page, Godly, Navbar Gallery, Footer Design).
-- Load `skills/copywriting`. Draft the headline, subhead, and CTAs before designing the hero.
+Load `skills/design-intelligence`, `skills/animation-motion`, and `skills/copywriting`.
 
-## 2. Section plan
+Write this, short:
 
-Pick and order sections for the story. A strong default:
+```
+Goal:       <one conversion: sign up, book a call, hire me, buy>
+Direction:  <one sentence>
+References: <3 from references/inspiration.md, one principle each>
+Palette / Type / Icons / Voice: <from the design brief template>
+Signature:  <the one move people will remember>
+Motion:     <the inventory: load sequence, reveal styles, hover set, showpiece scene>
+Sections:   <ordered list, each with its layout type>
+```
 
-1. **Navigation**: logo, dropdowns or mega menu, CTA. Sticky with blur on scroll.
-2. **Hero**: headline under 10 words, subline, primary CTA, visual anchor, proof.
-3. **Social proof**: customer logos (Simple Icons for known brands) with a metric.
-4. **Problem/Value**: what changes for the user, in their language.
-5. **Features**: bento grid, scroll-pinned story, or tabbed showcase. Not three equal cards.
-6. **Product demo**: real UI, video, or interactive element.
-7. **Testimonials**: real names, roles, photos. Wall, carousel, or single big quote.
-8. **Pricing** (if relevant): 2-3 plans, highlighted recommended plan, monthly/yearly toggle.
-9. **FAQ**: accordion, 5-8 real objections answered.
-10. **Final CTA**: bold, full-width, repeat the primary action.
-11. **Footer**: grouped links, socials, legal, newsletter (optional).
+Section layouts must vary. Pick from: full-bleed, split, bento, asymmetric, sticky-scroll, marquee, horizontal scroll, editorial grid, oversized type. No two neighbours share a layout.
 
-Vary layout every section. Alternate density, alignment, and background tone.
+Draft the headline, subhead, and CTA now. Design around real words.
 
-## 3. Build
+## 2. Slice (hero + nav at final quality)
 
-- Tokens, then primitives, then `Header`, `MobileMenu`, `Footer`.
-- Hero next. Iterate on it until it's genuinely striking at 375 and 1440.
-- Then remaining sections, each as its own component in `components/sections/`.
+- Tokens in `globals.css` (`examples/tokens.css`), including effect utilities you'll need (`skills/design-systems`).
+- Copy the motion primitives from `examples/motion/` into `components/motion/`.
+- Build `Header`, `MobileMenu`, and the hero with its load sequence and signature move. Use real components from the start (`skills/frontend-architecture`), not a throwaway mockup.
+- Screenshot at 375 and 1440. Run the no-rules duel from `skills/visual-critique` on the slice.
 
-## 4. Motion
+**Gate:** don't build anything else until the slice would hold up on Godly or Awwwards. If it wouldn't, push it now. The rest of the page inherits this bar.
 
-- Hero intro sequence (under 1.5s), scroll reveals on sections, logo marquee, hover states.
-- One standout scroll moment (pinned feature story, text reveal, 3D, or interactive demo).
-- Lenis for smooth scroll if the site has scroll storytelling.
-- Reduced motion fallbacks for all of it.
+## 3. Extend (one section at a time)
 
-## 5. Conversion details
+For each section, in order:
+1. Build it from shared primitives, mobile first.
+2. Give it its motion: entrance (vary the style, don't fade-up everything), hover states, scroll behavior.
+3. Check it against the slice. Same bar, same voice.
 
-- Primary CTA visible on load at every width.
-- CTA copy is specific: "Start free trial" not "Submit"; "Book a 15-min demo" not "Contact".
-- Forms ask for the minimum (email only for waitlists).
-- SEO: title, meta description, Open Graph image, semantic headings, `sitemap.xml`.
+Default story order (adapt it): nav, hero, proof, problem/value, features or work, demo or case study, testimonials, pricing (if relevant), FAQ, final CTA, footer.
 
-## 6. Verify
+Portfolios: the work is the hero. Projects get large media, a hover preview, and a real case-study layout, not a grid of identical cards.
 
-- Full `skills/browser-verification` and `skills/visual-critique`.
-- Lighthouse mobile performance 90+ even with animations.
-- 5-second test: show the hero screenshot; can you state what the product does and who it's for?
+## 4. Harden
+
+- `skills/accessibility`: keyboard pass, focus, contrast, reduced-motion variant of every animation.
+- `skills/performance`: Lighthouse mobile 90+ with motion on. Lazy-load 3D and heavy media.
+- `skills/testing`: smoke, a11y, and interaction tests.
+- SEO: title, description, Open Graph image, sitemap.
+- Refactor anything duplicated twice into a component. Run the token audit.
+
+## 5. Verify
+
+- `skills/browser-verification` at four widths.
+- `skills/visual-critique` including the no-rules duel. Fix the lowest score first.
+- `checklists/visual-quality.md` and the other checklists.
+- 5-second test: from the hero screenshot alone, can you say what this is and who it's for?

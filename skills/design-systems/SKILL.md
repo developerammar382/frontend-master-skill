@@ -35,8 +35,19 @@ Define these in `app/globals.css` with Tailwind v4 `@theme`, or in `tailwind.con
 
   /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-marquee: marquee 40s linear infinite;
+
+  /* Atmosphere: gradients and glows are tokens too */
+  --gradient-hero: radial-gradient(60% 50% at 70% 30%, oklch(45% 0.15 25 / 0.18), transparent);
+  --shadow-lift: 0 1px 2px oklch(20% 0.02 60 / 0.06), 0 12px 32px -12px oklch(20% 0.02 60 / 0.18);
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
 }
 ```
+
+Effects with no Tailwind class (grain, grid lines, outlined text, custom masks) become named `@utility` blocks in the same file. See `rules/tailwind.md`. Tokens and utilities are how you keep a rich design consistent, not a reason to make it plainer.
 
 Dark mode: override the same tokens under `.dark` or `@media (prefers-color-scheme: dark)`. Components never change; tokens do.
 
@@ -44,7 +55,7 @@ Dark mode: override the same tokens under `.dark` or `@media (prefers-color-sche
 
 - Use the 4px grid only: Tailwind's default scale (`1` = 4px).
 - Pick a small allowed set and stick to it. Example: `2, 3, 4, 6, 8, 12, 16, 20, 24, 32`.
-- Arbitrary spacing (`p-[13px]`, `mt-[22px]`) is banned unless matching an external spec.
+- Arbitrary spacing (`p-[13px]`, `mt-[22px]`) is banned. Arbitrary composition (grid templates, `clamp()` type) is fine; see `rules/tailwind.md`.
 - Inside a component, use `gap-*` over margins.
 
 ## Radius
@@ -66,7 +77,7 @@ Dark mode: override the same tokens under `.dark` or `@media (prefers-color-sche
 
 ## Consistency audit
 
-Run `bash <skill-path>/evals/consistency-audit.sh` from the project root for a quick count, or these greps for exact lines. Any hits need justification or a fix. `clamp()` for fluid type and grid templates like `grid-cols-[1fr_14rem]` are allowed.
+Run `bash <skill-path>/evals/consistency-audit.sh` from the project root for a quick count, or these greps for exact lines. Any hits need justification or a fix. The first grep also matches allowed composition (`clamp()`, grid templates); skip those.
 
 ```bash
 # Arbitrary values (spacing, colors, sizes)

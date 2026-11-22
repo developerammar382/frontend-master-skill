@@ -5,7 +5,59 @@ description: Smooth, purposeful animation with GSAP, Motion, Lenis, and Three.js
 
 # Animation and Motion
 
-Motion makes a site feel alive and expensive. Bad motion makes it feel slow and cheap. Every animation needs a reason: guide attention, show a relationship, or give feedback.
+Motion makes a site feel alive and expensive. Bad motion makes it feel slow and cheap. Every animation needs a reason: guide attention, show a relationship, or give feedback. No motion at all is also a failure: the page feels like a static mockup.
+
+## Motion inventory (required, written in the brief)
+
+Plan motion before code, like color and type. Minimum per site type:
+
+| | Marketing, portfolio, launch | App, dashboard |
+| --- | --- | --- |
+| **Load sequence** | Hero headline, support, CTA, and visual arrive in a choreographed order, done in 1.2s | Skeletons that resolve into content |
+| **Section entrances** | Every section, at least 3 different styles across the page | Panels and lists fade or slide in once |
+| **Hover and press** | Every interactive element: buttons, cards, links, nav | Same |
+| **Showpiece** | One scroll moment people remember: pinned story, text reveal, parallax depth, 3D, or interactive demo | Not required |
+| **State changes** | Tabs, filters, accordions, menus animate between states | Same, plus layout animation on reorder |
+
+Write it like this in the brief:
+
+```
+Motion: load = TextReveal headline, stagger CTA + proof, parallax hero media
+        sections = clip (work), blur (about), stagger (services), scale (contact)
+        hover = card lift + image zoom, button press, link underline draw
+        showpiece = pinned case-study scroll, image swaps per step
+```
+
+## Motion primitives (use these first)
+
+Copy `examples/motion/` into `components/motion/`. They share timing from one file, handle reduced motion, and keep components clean:
+
+| Primitive | Use for |
+| --- | --- |
+| `Reveal` | Section and block entrances. Variants: `up`, `fade`, `blur`, `scale`, `clip` |
+| `Stagger` + `StaggerItem` | Lists, grids, hero sequences (`trigger="load"`) |
+| `TextReveal` | Headlines that rise word by word from a mask |
+| `Parallax` | Depth on media while scrolling |
+| `motion.ts` | Shared easing, durations, and stagger. Change the site's feel here |
+
+Build anything bigger (pinned scenes, horizontal scroll, 3D) as its own component that imports from `motion.ts`.
+
+## Hover and press with Tailwind only
+
+No JavaScript needed for most micro-interactions:
+
+```tsx
+// Card: lift, deepen shadow, zoom the image inside
+<article className="group overflow-hidden rounded-lg transition duration-300 ease-out hover:-translate-y-1 hover:shadow-lg">
+  <img className="transition duration-700 ease-out group-hover:scale-105" ... />
+</article>
+
+// Button: press feedback
+<button className="transition active:scale-[0.97]">...</button>
+
+// Link: underline that draws in
+<a className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-300 hover:bg-[length:100%_1px]">...</a>
+```
 
 ## Tool choice
 
@@ -42,10 +94,10 @@ For ideas and working source code, see the motion section of `references/inspira
 
 ## Smoothness rules
 
-- Animate only `transform` and `opacity`. Never animate `width`, `height`, `top`, `left`, or `box-shadow` in loops.
+- Loops and scroll-linked motion: only `transform` and `opacity`. One-shot entrances may also use `filter` and `clip-path`. Never animate `width`, `height`, `top`, or `left`.
 - Use `will-change` sparingly, only during the animation.
-- Content must be readable without waiting. Hero text appears within 300ms.
-- Never hide content behind animations that might not fire (SEO and no-JS). Set initial state in JS, not CSS `opacity: 0` on server HTML, or ensure it reveals on fail.
+- Content must be readable without waiting. The hero starts moving within 200ms and settles within 1.2s.
+- Text stays in the HTML even while it's visually hidden, so SEO is unaffected. Use `once: true` on scroll reveals so content never disappears again.
 - Clean up: use `useGSAP()` from `@gsap/react` so ScrollTriggers die on unmount.
 - Test on a throttled CPU (4x slowdown in devtools). If it stutters there, simplify.
 
@@ -64,7 +116,7 @@ gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
 });
 ```
 
-With reduced motion: no parallax, no auto-play, no large movement. Fades are fine.
+With reduced motion: no parallax, no auto-play, no large movement. Keep short fades so the page still feels finished. Gentler, not off. The primitives in `examples/motion/` already do this.
 
 ## Patterns worth using
 

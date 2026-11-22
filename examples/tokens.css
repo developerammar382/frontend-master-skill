@@ -20,6 +20,29 @@
   --radius-lg: 16px;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-marquee: marquee 40s linear infinite;
+
+  /* Atmosphere: glows and elevation are tokens, so every section stays consistent */
+  --gradient-hero: radial-gradient(60% 50% at 70% 30%, #7a1f2b2e, transparent);
+  --shadow-lift: 0 1px 2px #1a18140f, 0 12px 32px -12px #1a18142e;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* Faint grid behind hero and section backgrounds; fades out toward the edges */
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+}
+
+@utility text-outline {
+  -webkit-text-stroke: 1px currentColor;
+  color: transparent;
 }
 
 /* Dark theme swaps tokens only; components stay the same */
@@ -31,6 +54,7 @@
   --color-muted: #a39d92;
   --color-accent: #d9707d;
   --color-accent-ink: #121110;
+  --gradient-hero: radial-gradient(60% 50% at 70% 30%, #d9707d24, transparent);
 }
 
 @layer base {

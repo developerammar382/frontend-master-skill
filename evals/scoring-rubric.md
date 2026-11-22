@@ -34,7 +34,12 @@ Apply after scoring:
 - **-15**: existing functionality broken in a redesign
 - **-10**: emojis used as icons
 - **-10**: claimed verification that wasn't done
+- **-10**: no motion beyond hover colors on a marketing page or portfolio
 - **-5** each: AI fingerprint copy from `skills/copywriting` ("seamless", "unlock", "elevate"), lorem ipsum, default `blue-500`/`indigo-600` as brand, body text under 16px on mobile, horizontal scroll at any width
+
+## Parity rule (with-skill vs baseline)
+
+When comparing runs, the skill must score equal or higher than the baseline on **every** criterion, not just the total. A run that wins on code but loses on Distinctiveness, First impression, or Motion is a regression, even if its total is higher.
 
 ## Hard gates
 

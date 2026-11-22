@@ -1,50 +1,35 @@
 # Workflow: Build From Scratch
 
-Use when the user asks for a new site, app, or page.
+Use for a new multi-page site or app. For a single marketing page or portfolio, use `workflows/build-landing-page.md`. For dashboards, use `workflows/build-dashboard.md`.
 
-## 1. Understand (no code yet)
+## 1. Brief (before any code)
 
-- Read the request. Identify product, audience, pages, and must-have features.
-- If key facts are missing (product name, what it does), ask once, briefly. Otherwise assume and state your assumptions.
-- Load `skills/design-intelligence`.
+- Identify product, audience, pages, and must-have features. If the product name or purpose is missing, ask once; otherwise assume and state it.
+- Load `skills/design-intelligence` and `skills/animation-motion`. Write the design brief, including the signature and the motion inventory.
+- Load `skills/frontend-architecture`. List pages, sections, and components; mark which are shared.
 
-## 2. Direct
+## 2. Slice (one complete screen at final quality)
 
-- Write the design brief (direction, palette, type, radius, spacing, motion, signature).
-- Pick 2-3 references from Godly, Landing Love, or Awwwards and name what you're taking from each.
+- Scaffold: Next.js App Router, TypeScript, Tailwind (unless the stack differs).
+- Tokens and effect utilities in `globals.css` (`skills/design-systems`, `examples/tokens.css`). Fonts with `next/font`.
+- Copy `examples/motion/` into `components/motion/`.
+- Build the layout (header, mobile menu, footer) and the most important screen, fully: real components, real copy, real motion.
+- Screenshot at 375 and 1440 and run the no-rules duel (`skills/visual-critique`).
 
-## 3. Plan components
+**Gate:** the slice sets the bar for every other screen. Don't move on until it's striking.
 
-- Load `skills/frontend-architecture` and `skills/ui-components`.
-- List every section per page, then every component. Mark which are reusable.
-- Choose libraries: one component library, one animation approach, icons from Lucide + Simple Icons.
+## 3. Extend
 
-## 4. Set up the foundation
+- Build remaining pages from the same primitives. Each section ships with its motion and states (hover, focus, loading, empty, error).
+- New pattern used twice? Extract a component. Used once? Keep it inline.
+- Page transitions or shared-element transitions between list and detail views where they help.
 
-- Scaffold (Next.js App Router + TypeScript + Tailwind unless the user's stack differs).
-- Load `skills/design-systems`. Write tokens first: colors, fonts, radius, shadows, easing.
-- Load fonts with `next/font`.
-- Build primitives: `Button`, `Container`, `Section`, `Badge`, `Card`, `Input`.
-- Build layout: `Header` (with dropdowns or mega menu), `MobileMenu`, `Footer`.
+## 4. Harden
 
-## 5. Build sections
+- `skills/accessibility`, `skills/performance`, `skills/testing`.
+- Run the token audit (`evals/consistency-audit.sh`) and fix or justify every hit.
 
-- Hero first. It sets the bar for everything else. Spend the most effort here.
-- Then each section, mobile first (`skills/responsive-design`).
-- Use real, specific copy that follows `skills/copywriting`. No lorem ipsum.
+## 5. Verify and report
 
-## 6. Add motion
-
-- Load `skills/animation-motion`.
-- Add the signature animation first, then reveals and micro-interactions.
-- Reduced-motion support on everything.
-
-## 7. Verify
-
-- `skills/browser-verification`: build, screenshots at 4 widths, interaction checks, axe, Lighthouse.
-- `skills/visual-critique`: score, fix, repeat until all areas are 4+.
-- Run all four checklists in `checklists/`.
-
-## 8. Report
-
-What you built, the design direction, what you verified, what's left.
+- `skills/browser-verification`, `skills/visual-critique`, all four checklists.
+- Report: direction, what you built, what you verified, what's open.

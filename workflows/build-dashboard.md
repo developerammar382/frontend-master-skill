@@ -62,7 +62,7 @@ Build the app shell before any page:
 - Dense but not cramped: 14-15px for table text is acceptable, 16px for forms and body.
 - Charts use the brand palette, consistent across the app, with accessible color pairs.
 - Dark mode is expected for dashboards. Build both via tokens.
-- Subtle motion only: hover, layout transitions, number transitions. No scroll theatrics.
+- Subtle motion only: hover, layout transitions, number transitions, skeletons resolving into content. No scroll theatrics. Use the app column of the motion inventory in `skills/animation-motion` and the primitives in `examples/motion/`.
 
 ## 8. Verify
 

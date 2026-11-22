@@ -25,16 +25,12 @@ If the brand colors are weak (e.g. default blue), keep the hue family but refine
 - Load `skills/design-intelligence`. Write a design brief that evolves the brand.
 - Name the signature move. The user said "enhance", so the result must feel clearly, visibly better at first glance, not a padding tweak.
 
-## 4. Fix the foundation first
+## 4. Slice, then extend
 
-In this order, because each step improves everything after it:
-1. **Tokens**: introduce a consistent color, type, spacing, and radius system.
-2. **Typography**: new pairing and scale (unless the brand font is fixed).
-3. **Primitives**: rebuild Button, Input, Card, Badge on the tokens.
-4. **Navigation**: upgrade to dropdowns/mega menu on desktop and a designed mobile menu.
-5. **Hero**: rebuild with a visual anchor and proof near the fold.
-6. **Sections**: vary layouts, fix rhythm and whitespace.
-7. **Motion and polish**: hover states, reveals, micro-interactions.
+1. **Foundation**: tokens, type pairing and scale, effect utilities (`skills/design-systems`). Copy `examples/motion/` into `components/motion/`.
+2. **Slice**: rebuild navigation and hero at final quality, motion included. Screenshot next to the "before". It must look clearly better at first glance; if not, push it before going further.
+3. **Primitives**: rebuild Button, Input, Card, Badge on the tokens, with hover, press, and focus states.
+4. **Sections**: one at a time, each with varied layout and its own motion. Match the slice's bar.
 
 ## 5. Refactor safely
 
@@ -47,7 +43,8 @@ In this order, because each step improves everything after it:
 
 - Screenshot "after" at the same widths. Compare side by side with "before".
 - Ask: would the user be surprised by how much better this is? If not, push the hero, type, and navigation further.
-- Full `skills/browser-verification` and `skills/visual-critique`.
+- Full `skills/browser-verification` and `skills/visual-critique`, including the no-rules duel.
+- Run the existing tests, then add the ones `skills/testing` asks for.
 - Confirm every original feature still works.
 
 ## 7. Report

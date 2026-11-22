@@ -31,6 +31,7 @@ src/
     ui/                   # primitives: Button, Input, Badge, Card (shadcn lives here)
     layout/               # Header, Footer, Sidebar, Container, Section
     sections/             # page sections: Hero, Features, Pricing, FAQ
+    motion/               # Reveal, Stagger, TextReveal, Parallax, motion.ts (from examples/motion)
     dashboard/            # feature components: StatCard, RevenueChart
   hooks/                  # useMediaQuery, useScrollDirection
   lib/                    # utils, constants, data, api clients

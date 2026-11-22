@@ -4,25 +4,34 @@ An open-source skill that stops AI from producing generic, messy frontends.
 
 Ask an AI agent to "enhance this page" and you usually get one of two results: a padding tweak, or a redesign that wipes out the brand and breaks the forms. This skill gives the agent a senior designer's process, strict rules, and a way to check its own work before it says it's done.
 
+## How it works
+
+Most rulebooks make AI code cleaner and designs plainer. This skill is built to avoid that trade-off:
+
+- **Design at full ambition, engineer it cleanly.** Rules decide how a design is built, never how much design there is.
+- **Slice first.** Hero and navigation are built at final quality, motion included, before anything else. The rest of the page matches that bar.
+- **Motion is planned, not bolted on.** Every build writes a motion inventory up front and ships ready-made primitives (`Reveal`, `Stagger`, `TextReveal`, `Parallax`).
+- **An expression toolkit, not just bans.** Scale contrast, depth, texture, masks, pinned stories, each with a clean Tailwind implementation.
+- **The no-rules duel.** Before finishing, the agent imagines the version it would build with no rules and builds those ideas the clean way.
+- **Gates that require ambition.** A page with no motion or a template layout fails the checklist, even if the code is perfect.
+
 ## What it enforces
 
-- **Components first**, with code a junior developer can read and change
-- **Distinctive design**: no default blue, no Inter-on-white, no text-only hero, no link-row navbar
-- **Real navigation**: dropdowns and mega menus on desktop, a designed mobile menu
-- **Design tokens** for color, type, spacing, and radius, checked with a grep audit
-- **Mobile first** at 375 / 768 / 1280 / 1440
-- **Smooth motion** with GSAP, Motion, Lenis, and Three.js, plus reduced-motion support
-- **WCAG 2.2 AA** accessibility
-- **Verification**: screenshots, Playwright, axe, and Lighthouse before reporting done
-- **Human copy**: bans AI phrasing ("seamless", "unlock", "elevate") and gives before/after rewrites
-- **Curated sources**: 60+ inspiration sources, 11 icon sets matched to brand personality, component registries, fonts, and color tools
+- **Distinctive design**: signature move, varied layouts, real navigation with mega menus, no template look
+- **Motion**: load sequences, varied entrances, hover on everything, one showpiece, gentle reduced-motion fallbacks
+- **Tailwind-first code**: tokens for every repeated value, `@utility` for effects, components a junior can change
+- **Testing that matters**: interaction tests, route smoke tests with axe, critical flows; no snapshot noise
+- **WCAG 2.2 AA** and green Core Web Vitals
+- **Verification**: screenshots at 375 / 768 / 1280 / 1440 and honest reporting
+- **Human copy**: no AI phrasing, with before/after rewrites
+- **Curated sources**: 60+ inspiration sources, 11 icon sets, 50 component libraries
 
 ## Structure
 
 | Folder | Purpose |
 | --- | --- |
 | `SKILL.md` | Entry point: non-negotiables, routing, definition of done |
-| `skills/` | 12 focused skills (design, architecture, motion, accessibility, copywriting, and more) |
+| `skills/` | 13 focused skills (design, motion, architecture, testing, accessibility, copywriting, and more) |
 | `references/` | Curated sources: inspiration, icons and assets, component libraries |
 | `workflows/` | Step-by-step processes for 6 common jobs |
 | `rules/` | Strict rules for React, Next.js, TypeScript, Tailwind, accessibility |

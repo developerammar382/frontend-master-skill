@@ -7,6 +7,19 @@ description: Review your own UI like a demanding senior designer, score it, and 
 
 You will be tempted to call the first render good. Don't. Look at the screenshots and critique them as if a rival agency built them.
 
+## The no-rules duel (run this first)
+
+AI agents with long rulebooks drift toward safe, plain output. This check pulls the design back up.
+
+1. Look at your screenshots at 1440 and 375.
+2. Imagine the version you'd build for this prompt with **no rules at all**, only the goal of winning an award. Write down its 3 boldest ideas: layout, type, motion, effects.
+3. For each idea, ask: is it in my build? If not, does it break accessibility or performance in a way that can't be fixed?
+4. Build every idea that survives step 3, the clean way: tokens, `@utility`, motion primitives, small components.
+
+Report it in one line: `Duel: added pinned case-study scroll, outlined display numerals, grain texture. Dropped autoplay video (LCP cost).`
+
+Rules shape how you build. They are never a reason to build less.
+
 ## The squint test
 
 Blur your eyes (or scale the screenshot to 25%). Ask:
@@ -42,12 +55,14 @@ Generic tells to hunt for:
 | **Layout and rhythm** | Varied sections, strong grid, generous whitespace, nothing cramped |
 | **Consistency** | Same spacing, radius, shadows, icon style, and button styles everywhere |
 | **Detail** | Hover and focus states, loading/empty states, polished micro-interactions |
-| **Motion** | Smooth, purposeful, never blocks reading |
+| **Motion** | Full inventory built: load sequence, varied entrances, hover on everything, one showpiece. Smooth and never blocks reading |
 | **Mobile** | Feels designed for the phone, not squeezed |
 | **Brand fit** | Every choice supports the brand and audience |
 | **Copy** | Specific to this product, sounds like a person, passes `skills/copywriting` |
 
 **Ship threshold: no area below 4, average 4.3+.** Anything lower: fix the lowest area first, re-screenshot, re-score.
+
+Score honestly. A 5 means it would hold up next to a Godly or Awwwards feature in that area. If you can't name the specific thing that earns the 5, it's a 4.
 
 ## Fresh-eyes pass
 

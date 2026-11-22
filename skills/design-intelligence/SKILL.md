@@ -7,6 +7,8 @@ description: Art direction for any UI. Decide palette, typography, layout, hero,
 
 Good design is a set of decisions made on purpose. Make them before you write code, and write them down.
 
+The rules below say what to avoid. The expression toolkit says what to reach for. Use both: a page that only avoids mistakes is safe, not memorable.
+
 ## Step 1: Read the product
 
 Answer these in two lines each. If the user didn't say, infer from the content and state your assumption.
@@ -28,7 +30,7 @@ Icons:     <one set and stroke, e.g. "Phosphor light" (see references/icons-and-
 Voice:     <three words, e.g. "direct, precise, dry" (see skills/copywriting)>
 Radius:    <one value system, e.g. 6 / 10 / 16>
 Spacing:   <base unit, e.g. 4px grid>
-Motion:    <mood, e.g. "slow, weighted reveals; no bounce">
+Motion:    <inventory: load sequence, section entrances, hover set, showpiece (see skills/animation-motion)>
 Signature: <the one thing people will remember, e.g. "hero headline that splits on scroll">
 ```
 
@@ -89,6 +91,38 @@ Use `clamp()` for display sizes so they scale fluidly: `text-[clamp(2.5rem,6vw,5
 - Vary section rhythm. Not every section is "heading, paragraph, 3 cards". Mix full-bleed, split, bento, asymmetric, and sticky-scroll layouts.
 - Whitespace is a feature. Section padding: `py-20 md:py-28 lg:py-32` as a starting point.
 - One clear focal point per screen. If everything is bold, nothing is.
+
+## Expression toolkit
+
+These are what make a page feel designed rather than assembled. Use at least four on a marketing page or portfolio, chosen to fit the direction. Every one has a clean way to build it.
+
+| Technique | What it looks like | Build it with |
+| --- | --- | --- |
+| **Scale contrast** | Display type 6-12x the body size; one huge word or number | `text-[clamp(3.5rem,11vw,10rem)]` with `leading-[0.9]` and `tracking-tight` |
+| **Depth layers** | Background, mid, and foreground planes that move at different speeds | `Parallax` primitive, absolute layers inside a `relative` section |
+| **Texture** | Grain, noise, paper, or fine grid behind content | A `bg-grain` or `bg-grid` `@utility` in `globals.css` |
+| **Light** | Soft radial glow or gradient mesh behind the focal point | `--gradient-*` tokens used through `bg-(image:--gradient-hero)` |
+| **Broken grid** | Elements that overlap, bleed off the edge, or break column lines | Negative margins, `col-span` offsets, `-mx-4 md:-mx-12` bleeds |
+| **Masks and crops** | Images inside type, shapes, or reveals from a clipped edge | `mask-*` utilities, `clip-path` in a `@utility`, `Reveal variant="clip"` |
+| **Editorial rhythm** | Numbered sections, marginalia, oversized pull quotes, rules between blocks | Grid with a narrow label column: `grid-cols-[8rem_1fr]` |
+| **Kinetic type** | Headlines that rise, marquee strips, words that swap | `TextReveal`, an infinite marquee component |
+| **Pinned stories** | Visual stays fixed while text steps scroll past | `sticky top-0` column plus scroll-driven state, or GSAP ScrollTrigger |
+| **Real product or work** | Actual UI, case-study media, or photography as the hero | Layered screenshots with a slight tilt, video loops with a poster |
+| **Cursor and hover play** | Image previews following the cursor, magnetic CTAs (desktop only) | A small client component gated by `(hover: hover)` |
+| **Color blocking** | Full-bleed sections in a contrasting tone to reset rhythm | A section `tone` prop mapped to token backgrounds |
+
+Pick the signature from this list and execute it fully. Support it with two or three others. Don't use all of them.
+
+## Ambition floor per section
+
+| Section | Not enough | Enough |
+| --- | --- | --- |
+| Hero | Headline, paragraph, two buttons | Scale contrast + visual anchor + load sequence + proof |
+| Features / services | Three equal cards with icons | Bento, tabs, or pinned story with real visuals |
+| Work / portfolio | Grid of same-size thumbnails | Mixed sizes, hover previews, case-study entry points |
+| About | Paragraph and a headshot | Editorial layout, pull quote, timeline or numbers |
+| Testimonials | Three cards in a row | One large quote, a wall, or a marquee with real names |
+| Final CTA | Centered heading and button | Full-bleed color block, oversized type, one clear action |
 
 ## The hero (first impression)
 

@@ -1,91 +1,77 @@
 ---
 name: frontend-master
-description: Build, redesign, and audit production frontends that look hand-crafted by a senior design team. Use for any UI work - landing pages, websites, dashboards, admin panels, components, redesigns, "enhance this page", screenshot-to-code, or frontend audits in React, Next.js, TypeScript, and Tailwind.
+description: Build, redesign, and audit production frontends that look hand-crafted by a senior design team and are engineered like a senior codebase. Use for any UI work - landing pages, portfolios, websites, dashboards, admin panels, components, redesigns, "enhance this page", screenshot-to-code, or frontend audits in React, Next.js, TypeScript, and Tailwind.
 ---
 
 # Frontend Master
 
-You are designing for a product that will be judged in the first three seconds.
-Generic output is a failure, even if it works. Messy code is a failure, even if it looks good.
+Two bars, equal weight. The result must look like an award-shortlisted site **and** read like a senior engineer's codebase. Hitting one and missing the other is a failure.
 
-This file is the entry point. Read it fully, then load only the files the task needs.
+## The core rule
+
+**Design at full ambition. Engineer it cleanly.**
+
+Engineering rules decide *how* you implement a design. They never decide *how much* design there is. If a rule seems to block a visual idea (a gradient mesh, grain texture, masked headline, pinned scroll scene), the answer is never "drop the idea". It's "implement it the clean way": a token, a `@utility`, a motion primitive, a small component.
+
+Before finishing, ask: *"With no rules at all, would I have built something more striking?"* If yes, take those ideas and build them cleanly. This is the most important check in the skill.
 
 ## Non-negotiables
 
-These apply to every task. No exceptions unless the user explicitly overrides one.
-
-1. **Components first.** Before writing any page, list the reusable components it needs. Build those, then compose the page.
-2. **Junior-readable code.** A junior developer must understand any file in under two minutes. No clever abstractions, no deep generics, no magic.
-3. **Short comments.** One line, only where the "why" isn't obvious. Never narrate what the code does.
-4. **Tailwind only.** Custom CSS only for things Tailwind cannot do (complex keyframes, third-party overrides). Put it in one file.
-5. **Design tokens before pixels.** Define color, type, spacing, and radius tokens first. Never hardcode a value that has a token.
-6. **No generic look.** No default blue/green, no Inter-on-white, no centered-text-only hero, no flat link-row navbar, no emoji icons.
-7. **Mobile first.** Write base styles for 375px, then scale up with `sm:` `md:` `lg:` `xl:`.
-8. **Accessible by default.** Keyboard, focus, contrast, labels, reduced motion. Not an afterthought.
-9. **Verify before you claim done.** Render it, screenshot it at four widths, run the checklists. See `skills/browser-verification`.
-10. **Respect the brand.** If the product has a logo, colors, or voice, everything bends around them. Never override an existing brand with your taste.
-11. **Human copy.** Every word is specific to this product. No AI phrasing ("seamless", "unlock", "elevate"). See `skills/copywriting`.
+1. **A signature and a motion plan before code.** Every build names one memorable move and lists its motion inventory (`skills/animation-motion`). No plan, no code.
+2. **Slice first.** Build the hero and navigation at final quality, motion included, before anything else. Everything after matches that bar.
+3. **Motion is part of each section, not a phase.** A section isn't done until its entrance, hover, and scroll behavior are done.
+4. **Tailwind-first, tokens for every value.** Effects Tailwind can't express go in `@utility` blocks or `@theme` tokens, never inline styles or scattered CSS (`rules/tailwind.md`).
+5. **Components a junior can change.** Small files, plain props, short "why" comments (`skills/frontend-architecture`).
+6. **Accessible and fast.** WCAG 2.2 AA, Core Web Vitals green. Reduced motion gets gentler motion, not a broken page.
+7. **Respect the brand and write like a human.** Existing logos, colors, and voice win over your taste (`skills/copywriting`).
+8. **Verify, don't assume.** Screenshots at 375, 768, 1280, 1440, the tests in `skills/testing`, and an honest report.
 
 ## Routing
 
-Pick the workflow that matches the request, then follow it step by step.
-
 | Request looks like | Workflow |
 | --- | --- |
-| "Build a site/app/page for X" | `workflows/build-from-scratch.md` |
+| Landing page, marketing site, portfolio, personal site, launch page | `workflows/build-landing-page.md` |
+| "Build a site/app for X" (multi-page or app) | `workflows/build-from-scratch.md` |
+| Dashboard, admin panel, analytics, CRM, internal tool | `workflows/build-dashboard.md` |
 | "Enhance / improve / redesign / modernize this" | `workflows/redesign-existing-ui.md` |
 | A screenshot, Figma frame, or image of a UI | `workflows/screenshot-to-code.md` |
-| Dashboard, admin panel, analytics, CRM, internal tool | `workflows/build-dashboard.md` |
-| Landing page, marketing site, product launch page | `workflows/build-landing-page.md` |
 | "Review / audit / what's wrong with this UI" | `workflows/audit-frontend.md` |
 
-Load skills as the workflow tells you. Load rules for the stack in use:
-`rules/react.md`, `rules/nextjs.md`, `rules/typescript.md`, `rules/tailwind.md`, `rules/accessibility.md`.
+Every build workflow follows the same spine: **Brief → Slice → Extend → Harden → Verify.** Load skills when a workflow step names them, not all at once.
 
-## Skill index
+## Skills
 
 | Skill | Use it for |
 | --- | --- |
-| `skills/design-intelligence` | Art direction: palette, type, layout, hero, navigation concepts |
-| `skills/design-systems` | Tokens, scales, theming, consistency rules |
-| `skills/frontend-architecture` | Folder structure, component boundaries, state, data flow |
-| `skills/ui-components` | Library choice, component patterns, icons |
-| `skills/responsive-design` | Mobile-first layout, breakpoints, mobile navigation |
-| `skills/animation-motion` | GSAP, Motion, Three.js, Lenis, timing and easing |
+| `skills/design-intelligence` | Art direction, the expression toolkit, hero and navigation |
+| `skills/animation-motion` | Motion inventory, timing, the motion primitives |
+| `skills/design-systems` | Tokens, `@theme`, `@utility` effects, theming |
+| `skills/frontend-architecture` | Folders, component boundaries, state |
+| `skills/ui-components` | Libraries, primitives, icons |
+| `skills/responsive-design` | Mobile-first layout and mobile navigation |
+| `skills/copywriting` | Copy that sounds human |
 | `skills/accessibility` | WCAG 2.2 AA in practice |
-| `skills/performance` | Core Web Vitals, images, fonts, bundle size |
-| `skills/visual-critique` | Self-review against a senior designer's eye |
-| `skills/browser-verification` | Rendering, screenshots, automated checks |
-| `skills/frontend-debugging` | Layout bugs, hydration errors, z-index, overflow |
-| `skills/copywriting` | Headlines, CTAs, empty states, errors: copy that sounds human |
+| `skills/performance` | Core Web Vitals, images, fonts, bundles |
+| `skills/testing` | What to test, with which tool, and what not to test |
+| `skills/visual-critique` | Scoring against a real bar, the no-rules duel |
+| `skills/browser-verification` | Screenshots and automated checks |
+| `skills/frontend-debugging` | Layout bugs, hydration, overflow, jank |
 
-## References
-
-Load these when the workflow needs sources. They're lists, not instructions.
-
-| File | Contains |
-| --- | --- |
-| `references/inspiration.md` | Site galleries, section galleries, app patterns, motion, type, color, design systems |
-| `references/icons-and-assets.md` | Icon sets by personality, animated icons, logos, flags, illustrations, photos |
-| `references/component-sources.md` | Primitives, copy-in component registries, specialized libraries |
+Lists of sources live in `references/` (inspiration, icons and assets, component libraries). Working code to copy lives in `examples/` (tokens, header with mega menu, motion primitives).
 
 ## Definition of done
 
-A task is done only when all of these are true:
+- [ ] `checklists/visual-quality.md` passes, including the ambition and motion sections
+- [ ] `skills/visual-critique` passes, including the no-rules duel
+- [ ] `checklists/responsive-quality.md` and `checklists/accessibility.md` pass
+- [ ] Tests from `skills/testing` pass; build, lint, and types are clean
+- [ ] `checklists/production-readiness.md` passes for shipped work
 
-- [ ] `checklists/visual-quality.md` passes
-- [ ] `checklists/responsive-quality.md` passes at 375, 768, 1280, 1440
-- [ ] `checklists/accessibility.md` passes
-- [ ] `checklists/production-readiness.md` passes (for shipped work)
-- [ ] Screenshots were taken and looked at, not assumed
-- [ ] You can name what makes this design distinct from a template
+If you couldn't verify something, say so. Never report unverified work as finished.
 
-If you could not verify something, say so plainly. Never report unverified work as finished.
+## Report back
 
-## How to report back
-
-Keep it short:
-1. What you built or changed (one line per component or section)
-2. The design direction in one sentence (palette, type, mood)
-3. What you verified and how
-4. Anything you could not verify or that needs a decision
+1. The design direction and signature, in two sentences
+2. What you built (one line per section or component)
+3. What you verified and how (commands, widths, scores)
+4. What's unverified or needs a decision

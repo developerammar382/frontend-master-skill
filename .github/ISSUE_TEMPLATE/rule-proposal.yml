@@ -1,0 +1,23 @@
+name: Rule or source proposal
+description: Suggest a new rule, workflow, example, or curated source
+labels: ["proposal"]
+body:
+  - type: textarea
+    id: failure
+    attributes:
+      label: The failure it fixes
+      description: What does the agent do wrong today? Include a prompt that reproduces it.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: The rule, file, or source, and where it belongs.
+    validations:
+      required: true
+  - type: textarea
+    id: check
+    attributes:
+      label: How to verify it
+      description: How would a checklist or eval case catch this?

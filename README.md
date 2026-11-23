@@ -1,8 +1,24 @@
 # Frontend Master Skill
 
+[![CI](https://github.com/developerammar382/frontend-master-skill/actions/workflows/ci.yml/badge.svg)](https://github.com/developerammar382/frontend-master-skill/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/developerammar382/frontend-master-skill)](CHANGELOG.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 An open-source skill that stops AI from producing generic, messy frontends.
 
 Ask an AI agent to "enhance this page" and you usually get one of two results: a padding tweak, or a redesign that wipes out the brand and breaks the forms. This skill gives the agent a senior designer's process, strict rules, and a way to check its own work before it says it's done.
+
+## Before and after
+
+Same prompt each time. Left: what AI agents typically produce by default. Right: the standard Frontend Master holds every build to.
+
+![Portfolio: generic AI default vs. Frontend Master](.github/readme/before-after-1.png)
+
+![SaaS landing page: generic AI default vs. Frontend Master](.github/readme/before-after-2.png)
+
+![E-commerce dashboard: generic AI default vs. Frontend Master](.github/readme/before-after-3.png)
+
+The prompts are eval cases [01](evals/test-cases/01-saas-landing.md), [03](evals/test-cases/03-analytics-dashboard.md), and [09](evals/test-cases/09-portfolio-design-vs-engineering.md). Run them yourself with and without the skill.
 
 ## How it works
 
@@ -36,7 +52,7 @@ Most rulebooks make AI code cleaner and designs plainer. This skill is built to 
 | `workflows/` | Step-by-step processes for 6 common jobs |
 | `rules/` | Strict rules for React, Next.js, TypeScript, Tailwind, accessibility |
 | `checklists/` | Pass/fail gates before shipping |
-| `evals/` | Test prompts, scoring rubric, benchmark method, audit script |
+| `evals/` | Test prompts, scoring rubric, benchmark method, audit and lint scripts |
 | `examples/` | Reference code: design brief, tokens, mega menu header |
 
 ## Install
@@ -133,6 +149,12 @@ The agent picks the matching workflow from `SKILL.md`.
 Run the cases in `evals/test-cases/` with and without the skill, then score both blind using `evals/scoring-rubric.md`. See `evals/benchmark.md`.
 
 Benchmark results haven't been published yet. If you run the suite, open a PR with your scores.
+
+## Contributing
+
+The most useful contribution is a bad-output report: the prompt, the agent, and screenshots. Each one can become an eval case. Open one with the **Bad output** issue template.
+
+For rules, sources, and examples, see [CONTRIBUTING.md](CONTRIBUTING.md). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 

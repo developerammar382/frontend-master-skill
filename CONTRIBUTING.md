@@ -51,3 +51,13 @@ The skill must read like it was written by an experienced engineer, not generate
 - One topic per PR.
 - Title says what changed: "Add mega menu keyboard rules to accessibility checklist".
 - Include before/after eval scores for anything that changes agent behavior.
+- Run `bash evals/lint-skill.sh` before opening the PR. CI runs it too.
+- Add a line to `CHANGELOG.md` under Unreleased.
+
+## Releases
+
+Maintainers cut releases from `main`. Versions follow semver, as defined at the top of `CHANGELOG.md`.
+
+1. Move the Unreleased entries under a new version heading with today's date, and update the compare links.
+2. Commit, then tag: `git tag -a v1.2.0 -m "v1.2.0"` and `git push --follow-tags`.
+3. Create a GitHub release from the tag and paste that version's changelog section as the notes.

@@ -1,0 +1,23 @@
+name: Outdated or broken
+description: A broken link, a deprecated API, or an install step that fails
+labels: ["outdated"]
+body:
+  - type: input
+    id: file
+    attributes:
+      label: File
+      placeholder: e.g. skills/ui-components/SKILL.md
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong
+      description: Quote the line, and paste any error output.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source for the fix
+      description: Link to the docs, changelog, or release notes that show the current way.

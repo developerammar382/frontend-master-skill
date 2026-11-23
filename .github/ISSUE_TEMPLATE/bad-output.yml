@@ -1,0 +1,69 @@
+name: Bad output
+description: The agent produced a weak design, messy code, or skipped a step while using the skill
+labels: ["bad-output"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Bad-output reports are the most useful issues we get. Each one can become an eval case.
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt
+      description: The exact prompt you gave the agent.
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      options:
+        - Claude Code
+        - Codex
+        - Cursor
+        - GitHub Copilot
+        - Gemini CLI
+        - Windsurf
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model
+      placeholder: e.g. claude-opus-5-5
+  - type: dropdown
+    id: area
+    attributes:
+      label: What went wrong
+      multiple: true
+      options:
+        - Generic or template-looking design
+        - Missing or weak motion
+        - Tailwind or token violations
+        - Component structure or architecture
+        - Accessibility
+        - Responsive layout
+        - Tests missing or weak
+        - Copy sounds AI-written
+        - Skill was not loaded
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What happened vs. what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or code
+      description: Drag images in, or link a repo or gist.
+  - type: input
+    id: version
+    attributes:
+      label: Skill version
+      description: From CHANGELOG.md, or the commit you installed.
